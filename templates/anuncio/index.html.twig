@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Gestión - Anuncios{% endblock %}
+
+{% block main_container %}
+    <div class="alert alert-info mt-3">
+        <h5 class="display-5 text-center">Anuncios</h5>
+    </div>
+    <a class="my-3 btn btn-primary" href="{{ path('anuncio_new') }}">Añadir anuncio</a>
+    <table id="tablaAnuncios" class="table my-5 text-center table-hover table-bordered mb-5" style="width: 100%">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Vídeo</th>
+            <th>Duración</th>
+            <th>Activo</th>
+            <th style="min-width:250px">Opciones</th>
+        </tr>
+        </thead>
+    </table>
+    <script src="{{ asset('assets/js/dataTables/dataTablesAnuncio.js') }}"></script>
+{% endblock %}

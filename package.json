@@ -1,0 +1,8 @@
+{
+  "name": "Proyecto2DAW",
+  "version": "1.0.0",
+  "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^4.5.1",
+    "mapbox-gl": "^1.10.0"
+  }
+}

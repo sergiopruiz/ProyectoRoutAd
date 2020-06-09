@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Gestión - Usuarios{% endblock %}
+
+{% block main_container %}
+        <div class="alert alert-info mt-3">
+            <h5 class="display-5 text-center">Usuarios</h5>
+        </div>
+        <table id="tablaUsuarios" class="table my-5 text-center table-hover table-bordered mb-5" style="width: 100%">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Activo</th>
+                <th style="min-width:250px">Opciones</th>
+            </tr>
+            </thead>
+        </table>
+    <script src="{{ asset('assets/js/dataTables/dataTablesUsuario.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block main_container %}
+    <div class="my-5">
+        {{ form_start(form) }}
+
+        <div class="row">
+            <div class="col-12">
+                {{ form_row(form.username) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {{ form_row(form.password) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

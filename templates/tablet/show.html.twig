@@ -1,0 +1,71 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Tablet{% endblock %}
+
+{% block main_container %}
+    <div class="row my-5">
+        <div class="col-6">
+            <table class="table">
+                <thead class="thead-dark">
+                    <th colspan="5" class="text-center">Datos tablet</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ tablet.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Matricula</th>
+                        <td>{{ tablet.matricula }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha última actualización</th>
+                        <td>{{ tablet.fechaUpdate |date("d/m/Y") }}</td>
+                    </tr>
+                    <tr>
+                        <th>Servicios realizados</th>
+                        <td>
+                            <a class="btn btn-outline-info" href="{{ path('servicio_show', {'id': tablet.id}) }}">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://wallapush.sergiopr.tech/uploads/tablets/{{ tablet.imagenCorporativa }}" class="img-thumbnail mt-1"
+                                 style="max-height: 295px">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th colspan="6" class="text-center">Anuncios</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for anuncio in anuncios %}
+                    <tr>
+                        <td>
+                            {{ anuncio.video }}
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-info" href="{{ path('anuncio_show', {'id': anuncio.id}) }}">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <a class="btn btn-outline-danger btn-lg" href="{{ path('tablet_index') }}">Volver</a>
+        </div>
+    </div>
+{% endblock %}

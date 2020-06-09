@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+    {% block title %}RoutAd{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <span class="navbar-brand disabled text-white">RoutAd</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                {% if is_granted('ROLE_USER') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('usuario_edit', {'id': app.user.id}) }}">{{ app.user.username }}</a>
+                </li>
+                <div class="btn-group mx-2">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestión
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ path('anuncio_index') }}">Anuncios</a>
+                        <a class="dropdown-item" href="{{ path('tablet_index') }}">Tablets</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('usuario_index') }}">Usuarios</a>
+                        {% endif  %}
+                    </div>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('logout') }}"><i class="fa fa-sign-out" style="margin-right: 5px;"></i>Cerrar sesión</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('usuario_new') }}">Registro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('login') }}">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <main class="container">
+        {% block main_container %}
+        {% endblock %}
+    </main>
+    <footer class="mt-5">
+        <div class="bg-dark fixed-bottom p-1">
+            <p class="text-center text-light align-content-center my-auto">RoutAd</p>
+        </div>
+    </footer>
+{% endblock %}
+
+

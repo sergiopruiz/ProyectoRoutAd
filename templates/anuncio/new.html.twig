@@ -1,0 +1,71 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Nuevo Anuncio{% endblock %}
+
+{% block main_container %}
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css"/>
+    <link href="{{ asset('assets/css/geocoder.css') }}" rel="stylesheet">
+
+    <div class="row my-5">
+        {% if error is defined and error is not null %}
+            <div class="col-12 alert alert-danger alert-dismissible fade show my-3" role="alert">
+                {{ error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        <div class="col-lg-12 order-1 order-lg-2">
+        {{ form_start(form) }}
+        {% if not form.vars.valid %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ form_errors(form) }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+            <div class="row justify-content-around">
+                <div class="col-md-4">
+                    <h5 class=" d-flex justify-content-center align-items-center alert alert-warning">Video</h5>
+                    {{ form_row(form.video) }}
+                </div>
+                <div class="col-md-4">
+                    <h5 class=" d-flex justify-content-center align-items-center alert alert-warning">Imagen</h5>
+                    {{ form_row(form.imagen) }}
+                    <img src="" alt="" id="imagenPreview" class="img-thumbnail" style="margin-top: 10%;position: relative;"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.url) }}
+        </div>
+    </div>
+    <div class="row">
+        <div id="map"></div>
+    </div>
+    <div class="row">
+        <div class="col-6 d-flex justify-content-end align-items-center">
+            <a class="btn btn-outline-danger btn-lg" href="{{ path('anuncio_index') }}">Volver</a>
+        </div>
+        <div class="col-6 d-flex justify-content-start align-items-center">
+            <div class="mt-3">
+                {{ form_row(form.submit) }}
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+
+    <audio id="audio"></audio>
+    <script src="{{ asset('assets/js/imgPreview.js') }}"></script>
+    <script src="{{ asset('assets/js/duracionVideo.js') }}"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+    <script src="{{ asset('assets/js/mapBoxGeocoder.js') }}"></script>
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Anuncio{% endblock %}
+
+{% block main_container %}
+    <div class="row my-5">
+        <div class="col-6">
+            <video src="https://wallapush.sergiopr.tech/uploads/anuncios/{{ anuncio.video }}" controls
+                   style="width: 100%"></video>
+        </div>
+        <div class="col-6">
+            <img src="https://wallapush.sergiopr.tech/uploads/anuncios/{{ anuncio.imagen }}" class="img-thumbnail mt-1"
+                 style="max-height: 295px">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ anuncio.id }}</td>
+                </tr>
+                <tr>
+                    <th>Url</th>
+                    <td>{{ anuncio.url }}</td>
+                </tr>
+                <tr>
+                    <th>Duracion</th>
+                    <td>{{ anuncio.duracion }}</td>
+                </tr>
+                <tr>
+                    <th>Activo</th>
+                    <td>{{ anuncio.activo ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
+                </tr>
+                <tr>
+                    <th>Número de reproducciones</th>
+                    <td>{{ reproducciones }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <a class="btn btn-outline-danger btn-lg" href="{{ path('anuncio_index') }}">Volver</a>
+        </div>
+    </div>
+{% endblock %}
